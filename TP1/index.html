@@ -4,79 +4,129 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Entrega - Prototipos</title>
+    <title>Entrega TP1 - Interfaces de Usuario</title>
     <style>
+        /* Reset y estilos base */
         body {
-            font-family: Arial, sans-serif;
-            margin: 40px;
-            background: #f9f9f9;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
             color: #333;
+        }
+
+        header,
+        footer {
+            background-color: #2C3E50;
+            color: white;
+            padding: 20px 0;
             text-align: center;
         }
 
+        main {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
         h1 {
-            color: #222;
+            margin-bottom: 10px;
+            font-size: 2em;
         }
 
         h2 {
             margin-top: 40px;
-            color: #444;
+            font-size: 1.5em;
+            border-bottom: 2px solid #2C3E50;
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        p {
+            font-size: 1.1em;
         }
 
         .links {
-            margin-top: 30px;
+            margin-top: 20px;
         }
 
         a {
-            display: block;
-            margin: 10px 0;
-            padding: 12px 18px;
-            background: #4CAF50;
+            display: inline-block;
+            margin: 10px 10px 10px 0;
+            padding: 12px 20px;
+            background-color: #2980B9;
             color: white;
             text-decoration: none;
-            border-radius: 8px;
-            width: fit-content;
-            margin-left: auto;
-            margin-right: auto;
-            transition: background 0.3s;
+            border-radius: 6px;
+            transition: background 0.3s, transform 0.2s;
         }
 
         a:hover {
-            background: #45a049;
+            background-color: #1F618D;
+            transform: translateY(-2px);
         }
 
-        ul {
+        ul.integrantes {
             list-style: none;
             padding: 0;
             margin-top: 15px;
         }
 
-        li {
+        ul.integrantes li {
             font-size: 1.1em;
             margin: 6px 0;
+            padding: 8px;
+            background-color: #ecf0f1;
+            border-left: 5px solid #2980B9;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 600px) {
+            a {
+                width: 100%;
+                margin: 8px 0;
+            }
         }
     </style>
 </head>
 
 <body>
-    <h1>Entrega Final TP1</h1>
-    <p>Accede a los prototipos en alta fidelidad:</p>
+    <header>
+        <h1>Entrega TP1</h1>
+        <p>Interfaces de Usuario e Interacción - TUDAI</p>
+    </header>
 
-    <div class="links">
-        <a href="https://www.figma.com/file/XXXXXX?type=design&mode=design" target="_blank">
-            🔗 Prototipo en modo Editor
-        </a>
-        <a href="https://www.figma.com/proto/YYYYYY?type=design&mode=present" target="_blank">
-            🎬 Prototipo en modo Presentación
-        </a>
-    </div>
+    <main>
+        <section>
+            <h2>Prototipos en Alta Fidelidad</h2>
+            <p>Accede a los prototipos desarrollados en Figma o la herramienta que corresponda:</p>
+            <div class="links">
+                <a href="https://www.figma.com/file/XXXXXX?type=design&mode=design" target="_blank">
+                    🔗 Modo Editor
+                </a>
+                <a href="https://www.figma.com/proto/YYYYYY?type=design&mode=present" target="_blank">
+                    🎬 Modo Presentación
+                </a>
+            </div>
+        </section>
 
-    <h2>Integrantes</h2>
-    <ul>
-        <li>ONDICOL, Luciano Hernán</li>
-        <li>LEGUIZA, Franco</li>
-        <li>ARGÜELLO, Ludmila</li>
-    </ul>
+        <section>
+            <h2>Integrantes</h2>
+            <ul class="integrantes">
+                <li>ONDICOL, Luciano Hernán</li>
+                <li>LEGUIZA, Franco</li>
+                <li>ARGÜELLO, Ludmila</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>Repositorio de entrega TP1 - TUDAI 2025</p>
+    </footer>
 </body>
 
 </html>
