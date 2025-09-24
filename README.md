@@ -3,4 +3,4 @@
 ## Integrantes
 - ONDICOL, Luciano Hernán  
 - LEGUIZA, Franco  
-- ARGÜELLO, Ludmila  
+- ARGÜELLO, Ludmila Belén
