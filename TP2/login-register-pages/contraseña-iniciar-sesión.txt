@@ -1,2 +1,0 @@
-contraseña: 123
-Esto es para comprobar el estado de los botones al iniciar sesión (si los datos son correctos o incorrectos)
