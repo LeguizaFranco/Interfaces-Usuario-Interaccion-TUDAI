@@ -743,14 +743,19 @@ function initializeUserModal() {
     // Manejar clics en las opciones del menú
     menuLinks.forEach(link => {
         link.addEventListener('click', (e) => {
-            e.preventDefault();
             const action = link.getAttribute('data-action');
             console.log(`Acción de usuario seleccionada: ${action}`);
 
-            // Solo cerrar modal si no es logout (que puede mostrar confirmación)
-            if (action !== 'logout') {
+            // Para logout, permitir la redirección natural del enlace
+            if (action === 'logout') {
+                // No llamamos preventDefault() para permitir la redirección
                 hideUserModal();
+                return;
             }
+
+            // Para otras acciones, prevenir la redirección
+            e.preventDefault();
+            hideUserModal();
         });
     });
 
