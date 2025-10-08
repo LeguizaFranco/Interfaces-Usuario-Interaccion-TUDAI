@@ -37,11 +37,9 @@ body {
   color: white;
 }
 
-
 .logo {
   width: 16%;
   height: auto;
-  
 }
 
 .site-name {
@@ -94,7 +92,6 @@ justify-content: flex-end;
 }
 
 .user-icon {
-  
   padding-top: 1.5%;
   width: 6%; 
   height: 6%; 
@@ -414,16 +411,16 @@ justify-content: flex-end;
 
 /* footer */
 .footer {
-  background-color: #1b2a40; 
+  background-color: #1B2838; 
   color: white;
-  font-family: Arial, sans-serif;
-  padding: 2% 5%;
+  margin-top: 10%;
+  padding: 2% 6%;
 }
 
 .footer a {
-  color: white;
+  color: rgba(255, 255, 255, 0.847);
   text-decoration: none;
-  font-size: 0.9rem;
+  font-size:small;
 }
 
 .footer a:hover {
@@ -432,32 +429,56 @@ justify-content: flex-end;
 
 .footer-top {
   display: flex;
-  gap: 2%;
+  gap: 0%;
   flex-wrap: wrap;
   margin-bottom: 2rem;
+  margin-right: 0%;
 }
 
-.footer-logo {
+.footer-logo .logo {
   flex: 1 1 250px;
+  width: 20%;
+  padding: 0%;
+  height: auto;
+  display: inline;
+}
+
+.footer-logo h1{
+  display: inline; 
+  position: relative;
+  font-size: 200%;
+  font-weight: bold;
+  top: -40px;
+  right: 25px;
 }
 
 .footer-logo img {
-  width: 50px;
-  height: 50px;
+  width: 30px;
+  height: 30px;
+  margin-top: 5%;
+  margin-right: 1%;
 }
 
 .footer-logo p {
-  margin: 1rem 0;
+  margin: 1% 1% 0% 5%;
+  padding: 0%;
   font-size: 0.9rem;
 }
 
-.social-icons a {
-  margin-right: 0.5rem;
-  font-size: 1.5rem;
+.footer-logo h6 {
+  margin: 6% 0% 0% 5%;
+  padding: 0%;
+  font-size: medium;
+  color-scheme: rgba(255, 255, 255, 0.694);
+}
+
+.social-icons {
+  margin: 5%;
+  display: inline;
 }
 
 .footer-column {
-  flex: 1 1 150px;
+  flex: 1 1 100px;
 }
 
 .footer-column h3 {
@@ -482,14 +503,31 @@ justify-content: flex-end;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
+  margin: 1% 1% 0% 2%;
 }
 
 .back-top {
-  background-color: #0b2c56;
+  background-color: #38414cb0;
   color: white;
   border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 20px;
+  padding: 0.7rem 1rem;
+  border-radius: 14px;
   cursor: pointer;
-  margin-top: 0.5rem;
+  margin-top: 3rem;
+  position: relative;
+  right: -91%;
+}
+
+.separador-footer {
+  width: 2px; 
+  height: 300px;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.8) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.064);
+  border-radius: 2px;
+  margin: 0 20px; 
 }
