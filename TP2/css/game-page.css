@@ -82,11 +82,6 @@ body {
     border: none;
 }
 
-.back-to-top-button:hover {
-    background-color: #6B7280;
-    transform: translateY(-2px);
-}
-
 /* --- ANIMACIÓN KEYFRAME PARA GALERÍA --- */
 @keyframes pulse-gallery {
 
@@ -775,7 +770,7 @@ body {
 .comments-container {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 2rem;
 }
 
 .comment-item {
@@ -817,17 +812,18 @@ body {
     font-weight: 600;
     color: rgb(255 255 255);
     margin: 0;
+    font-size: 1.5rem;
 }
 
 .comment-time {
-    font-size: 0.75rem;
+    font-size: 0.9rem;
     line-height: 1rem;
     color: rgb(156 163 175);
     margin: 0;
 }
 
 .comment-text {
-    font-size: 0.875rem;
+    font-size: 1rem;
     line-height: 1.4;
     color: rgb(209 213 219);
     margin: 0;
@@ -840,8 +836,10 @@ body {
     color: white;
     margin-top: 10%;
     padding: 3% 5%;
-    width: 100%;
-    max-width: 100vw;
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
     box-sizing: border-box;
     overflow: hidden;
 }

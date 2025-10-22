@@ -4,6 +4,22 @@ let carouselGames = [];
 let carouselInterval;
 let isAutoSliding = false;
 
+function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// Funcionalidad para mostrar/ocultar el botón "Volver al principio"
+window.addEventListener('scroll', function () {
+    const backToTopButton = document.getElementById('back-to-top');
+
+    // Mostrar el botón después de hacer scroll de 300px hacia abajo
+    if (window.scrollY > 300) {
+        backToTopButton.classList.remove('hidden');
+    } else {
+        backToTopButton.classList.add('hidden');
+    }
+});
+
 // Loading simulado al cargar la página
 document.addEventListener('DOMContentLoaded', function () {
     // Crear el overlay de loading
@@ -43,7 +59,7 @@ function startLoadingSimulation() {
     const loadingOverlay = document.getElementById('loading-overlay');
 
     let currentProgress = 0;
-    const totalTime = 5000; // 5 segundos
+    const totalTime = 1000; // 1 segundos
     const intervalTime = 50; // Actualizar cada 50ms
     const increment = 100 / (totalTime / intervalTime); // Incremento por cada intervalo
 
@@ -474,7 +490,7 @@ function updateCategoryCarousels(games) {
     carouselContainers.forEach((container, index) => {
         if (index > 0) {
             const startIndex = (index - 1) * 4;
-            const categoryGames = games.slice(startIndex, startIndex + 4);
+            const categoryGames = games.slice(startIndex, startIndex + 5);
 
             if (categoryGames.length > 0) {
                 container.innerHTML = '';
