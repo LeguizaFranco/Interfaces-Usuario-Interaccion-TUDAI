@@ -1,0 +1,396 @@
+body {
+  
+    background-color: #1B2838;
+
+    color: #ffffff;
+
+    display: flex;
+    justify-content: center;
+    /* flex-direction: column; */
+}
+
+body, input, button {
+    font-family: 'Nunito', sans-serif;
+    font-weight: bold;
+}
+
+body, button {
+    text-shadow: 
+    -1px -1px 0 black,
+    -1px 1px 0 black,
+    1px 1px 0 black,
+    1px -1px 0 black;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    color: rgb(255, 255, 72);
+    text-decoration: none;
+}
+
+
+
+.contenedor-form {
+    width: 819px;
+    
+    display: flex;
+    justify-content: center;
+    
+
+    margin-top: 25px;
+    margin-bottom: 25px;
+
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-bottom: 75px;
+
+    background-color: #1B3048;
+    border: 5px solid black;
+    border-radius: 50px;
+}
+
+.contenido {
+    width: 75%;
+
+    margin: 0;
+    
+    flex-direction: column;
+    text-align: center;
+}
+
+.titulo-form {
+    margin-bottom: 50px;
+
+    font-size: larger;
+}
+
+.contenedor-imagen {
+    height: 200px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.contenedor-imagen div {
+    height: 50%;
+}
+
+.contenedor-imagen div a img{
+    height: 100px;
+}
+
+
+
+
+.contenedor-formulario, .contenedor-alternativa-iniciar-sesion {
+    font-size: large;
+    background-color: #18293F;
+
+    padding: 50px;
+    padding-top: 20px;
+    padding-bottom: 30px;
+
+    border: 5px solid black;
+    border-radius: 50px;
+}
+
+.formulario {
+    display: flex;
+    justify-content: center;
+}
+
+
+.lista-form {
+    width: 85%;
+}
+
+#elemento-lista-entrada-fecha-nacimiento {
+    text-align: start;
+}
+
+
+.entrada-texto-formulario, .entrada-texto-formulario:optional {
+    width: 100%;
+
+    background-color: #18293F;
+    
+    font-size: 20px;
+    color: #ffffff;
+    
+    margin-bottom: 30px;
+    padding: 0;
+    padding-bottom: 3px;
+
+    border: 0;
+    border-bottom: 2px solid rgb(255, 255, 255);   
+}
+
+.entrada-texto-formulario::placeholder,  .entrada-formulario-fecha-nacimiento::placeholder{
+    color: rgb(170, 170, 170);
+}
+
+.entrada-texto-formulario-opcional, .entrada-texto-formulario-opcional::placeholder {
+    font-style: oblique;
+   
+}
+    
+.entrada-texto-formulario-opcional::placeholder {
+    color: gray;
+}
+
+.entradas-fecha-nacimiento {
+    width: 100%;
+
+    margin-top: 10px;
+    margin-bottom: 25px;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: first baseline;
+}
+
+.entrada-formulario-fecha-nacimiento {
+    width: 30%;
+    height: 40px;
+    
+    margin: 0;
+    padding: 3px;
+  
+    font-size: large;
+    color: #ffffff;
+    
+    background-color: #2A4568;
+
+    border: 2px solid black;
+    border-radius: 10px;
+
+    transition: box-shadow .2s ease-out;
+}
+
+
+.entrada-formulario-fecha-nacimiento:hover {
+    box-shadow: 
+    3px 3px #7daeee,
+    3px -3px #7daeee,
+    -3px 3px #7daeee,
+    -3px -3px #7daeee;
+
+    transition: box-shadow .2s ease-in;
+}
+
+.entrada-formulario-fecha-nacimiento:focus {
+    box-shadow: 
+    3px 3px #2180FF,
+    3px -3px #2180FF,
+    -3px 3px #2180FF,
+    -3px -3px #2180FF;
+
+    background-color: #18293F;
+
+    transition: box-shadow .2s ease-in;
+}
+
+
+input.entrada-formulario-fecha-nacimiento {
+    text-align: center;
+    padding-left: 0;
+    padding-block: 0;
+    
+}
+
+.contenedor-entradas-fecha-nacimiento {
+    display: flex;
+    justify-content: center;
+}
+
+
+#imagen-captcha {
+    width: 85%;
+    border: 2px solid black;
+    border-radius: 25px;
+}
+
+#contenedor-imagen-captcha {
+    height: 100px;
+
+    margin-bottom: 30px;
+}
+
+.contenedor-boton-login-register {
+    height: 100px;
+}
+
+.boton-login-register, .boton-login-register:hover, .verificacion-exitosa, .verificacion-fallida{
+    width: 95%;
+    height: 100%;
+
+    font-size: 25px;
+    color: #ffffff;
+
+    border: 3px solid black;
+
+    border-radius: 25px;
+}
+
+.boton-login-register, .verificacion-exitosa, .verificacion-fallida {
+    background-color: #4576B7;
+    transition: background-color .3s ease-out;
+    transition: box-shadow .2s ease-out;
+}
+
+.boton-login-register:hover {
+    box-shadow: 
+    5px 5px #68a9ff,
+    5px -5px #68a9ff,
+    -5px 5px #68a9ff,
+    -5px -5px #68a9ff;
+
+    background-color: #355C8E;
+
+    transition: box-shadow .2s ease-in;
+    transition: background-color .2s ease-in;
+}
+
+.boton-login-register:focus {
+    box-shadow: 
+    5px 5px #3F91FE,
+    5px -5px #3F91FE,
+    -5px 5px #3F91FE,
+    -5px -5px #3F91FE;
+
+    transition: box-shadow .2s ease-in;
+}
+
+.boton-login-register:active {
+    background-color: #182a41;
+}
+
+.verificacion-fallida {
+    box-shadow: 
+    5px 5px #ff6862,
+    5px -5px #ff6862,
+    -5px 5px #ff6862,
+    -5px -5px #ff6862;
+
+    background-color: #d12f2f;
+
+    transition: box-shadow .3s ease-out;
+    transition: background-color .2s ease-out;
+}
+
+
+.verificacion-fallida:focus, .verificacion-fallida:hover {
+    box-shadow: 
+    5px 5px #ff231b,
+    5px -5px #ff231b,
+    -5px 5px #ff231b,
+    -5px -5px #ff231b;
+
+    background-color: #801c1c;
+
+    transition: box-shadow .3s ease-in;
+    transition: background-color .2s ease-in;
+}
+
+.verificacion-exitosa {
+    box-shadow: 
+    5px 5px #90ff86,
+    5px -5px #90ff86,
+    -5px 5px #90ff86,
+    -5px -5px #90ff86;
+
+    background-color: rgb(53, 142, 65);
+
+    transition: box-shadow .3s ease-out;
+    transition: background-color .2s ease-out;
+}
+
+.verificacion-exitosa:focus, .verificacion-exitosa:hover {
+    box-shadow: 
+    5px 5px #2eff1b,
+    5px -5px #2eff1b,
+    -5px 5px #2eff1b,
+    -5px -5px #2eff1b;
+
+    background-color: rgb(35, 95, 43);
+
+    transition: box-shadow .3s ease-in;
+    transition: background-color .2s ease-in;
+}
+
+
+.contenedor-separador {
+    margin-bottom: 50px;
+    margin-top: 50px;
+
+    font-size: 20px;
+}
+
+
+
+.separador {
+    display: flex;
+    justify-content: space-between;
+}
+
+.separador p {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.separador::before {
+    width: 100%;
+    content: "";
+    align-self: center;
+    border-top: 3px solid rgba(0, 0, 0);
+}
+
+
+.separador::after {
+    width: 100%;
+    content: "";
+    align-self: center;
+    border-top: 3px solid rgba(0, 0, 0);
+}
+
+
+.contenedor-alternativa-iniciar-sesion {
+    padding: 0;
+}
+
+.contenedor-imagenes-alternativa-iniciar-sesion {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+    padding: 0;
+}
+
+.contenedor-imagenes-alternativa-iniciar-sesion img {
+    width: 60%;
+    height: 75%;
+    object-fit: contain;
+
+    margin-top: 0;
+    padding: 0;
+    
+}
+
+.subtitulo-alternativa-iniciar-sesion {
+    font-size: 20px;
+
+    padding: 0;
+    margin-top: 35px;
+    margin-bottom: 0;
+}
+
