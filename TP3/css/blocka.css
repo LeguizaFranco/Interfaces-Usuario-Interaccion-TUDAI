@@ -368,7 +368,7 @@ body {
     /* Cambiado de height: max-content */
 }
 
-/* ✅ CONTENEDOR PRINCIPAL - POSITION RELATIVE */
+/*  CONTENEDOR PRINCIPAL */
 .video-section {
     background-color: rgb(17 24 39);
     border-radius: 0.75rem;
@@ -379,10 +379,10 @@ body {
     flex-direction: column;
     gap: 15px;
     min-height: 600px;
-    /* ✅ Altura mínima aumentada */
+   
     height: auto;
     position: relative;
-    /* ✅ IMPORTANTE: Para que las modales se posicionen relativo a este contenedor */
+    
 }
 
 #status-bar {
@@ -392,21 +392,21 @@ body {
     align-items: center;
     font-weight: 600;
     font-size: 1rem;
-    /* ✅ Reducir tamaño */
+    
     padding: 8px 0;
-    /* ✅ Reducir padding */
+    
     border-bottom: 1px solid #e5e7eb;
     background-color: #1f2937;
     border-radius: 8px;
     margin-bottom: 10px;
     flex-shrink: 0;
-    /* ✅ No permitir que se comprima */
+    
 }
 
 #canvas-container {
     width: 100%;
     max-width: 600px;
-    /* ✅ Limitar ancho máximo */
+   
     aspect-ratio: 1 / 1;
     background-color: #374151;
     border-radius: 8px;
@@ -414,18 +414,18 @@ body {
     position: relative;
     margin: 0 auto;
     flex-shrink: 0;
-    /* ✅ No permitir que se comprima */
+  
 }
 
 canvas {
     display: block;
     width: 100% !important;
-    /* ✅ Forzar 100% */
+    
     height: 100% !important;
-    /* ✅ Forzar 100% */
+    
     cursor: pointer;
     object-fit: contain;
-    /* ✅ Mantener proporción */
+    
 }
 
 #menu-screen {
@@ -433,13 +433,13 @@ canvas {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    /* ✅ Centrar verticalmente */
+    
     gap: 20px;
     padding: 40px 20px;
-    /* ✅ Reducir padding */
+    
     min-height: 300px;
     flex: 1;
-    /* ✅ Ocupar espacio disponible */
+   
 }
 
 #hint-container {
@@ -447,7 +447,7 @@ canvas {
     display: flex;
     justify-content: center;
     padding: 8px 0;
-    /* ✅ Reducir padding */
+    
     flex-shrink: 0;
 }
 
@@ -617,7 +617,7 @@ canvas {
    THUMBNAILS Y PREVIEW - ANCHO COMPLETO
    ======================================== */
 
-/* ✅ Modal de previsualización a ancho completo */
+/* Modal de previsualización a ancho completo */
 #preview-modal {
     position: absolute;
     top: 0;
@@ -632,10 +632,10 @@ canvas {
     padding: 0;
     box-sizing: border-box;
     overflow: hidden;
-    /* ✅ Sin scroll */
+  
 }
 
-/* ✅ Contenedor de la modal de preview a ancho completo */
+/* Contenedor de la modal de preview a ancho completo */
 #preview-modal .modal-box-large {
     background-color: #1f2937;
     padding: 30px 40px;
@@ -647,13 +647,13 @@ canvas {
     box-shadow: none;
     border: none;
     overflow: hidden;
-    /* ✅ Sin scroll */
+    
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
-/* ✅ Título de la modal de preview */
+/* Título de la modal de preview */
 #preview-modal .modal-box-large h2 {
     font-size: 2rem;
     color: #f59e0b;
@@ -661,34 +661,34 @@ canvas {
     margin-top: 0;
 }
 
-/* ✅ Subtítulo */
+/* Subtítulo */
 #preview-modal .subtitle {
     font-size: 1.1rem;
     margin-bottom: 30px;
 }
 
-/* ✅ Contenedor de thumbnails a ancho completo */
+/* Contenedor de thumbnails a ancho completo */
 #thumbnails-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    /* ✅ 6 columnas para mostrar todas las imágenes */
+    /* 3 columnas para mostrar todas las imágenes */
     gap: 20px;
     padding: 20px;
     background-color: transparent;
-    /* ✅ Sin fondo */
+    /* Sin fondo */
     border-radius: 0;
     max-height: none;
-    /* ✅ Sin límite de altura */
+    /*  Sin límite de altura */
     overflow: visible;
-    /* ✅ Sin scroll */
+    /*  Sin scroll */
     max-width: 1400px;
-    /* ✅ Ancho máximo para centrar */
+    /*  Ancho máximo para centrar */
 }
 
 .thumbnail {
     width: 100%;
     height: 180px;
-    /* ✅ Altura fija para uniformidad */
+    /*  Altura fija para uniformidad */
     object-fit: cover;
     border-radius: 12px;
     opacity: 0.4;
@@ -701,7 +701,7 @@ canvas {
     opacity: 1;
     border-color: #10b981;
     transform: scale(1.1);
-    /* ✅ Más grande al seleccionar */
+  
     box-shadow: 0 8px 24px rgba(16, 185, 129, 0.6);
 }
 
@@ -718,7 +718,7 @@ canvas {
     margin: 20px 0 0 0;
 }
 
-/* ✅ Las otras modales mantienen su tamaño normal */
+
 #instructions-modal,
 #result-modal {
     position: absolute;
@@ -878,7 +878,7 @@ canvas {
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    font-size: 0.875rem;
+    font-size: 1rem;
     line-height: 1.25rem;
     border-width: 1px;
     border-color: rgb(55 65 81);
@@ -902,8 +902,8 @@ canvas {
 }
 
 .detail-icon {
-    width: 2rem;
-    height: 2rem;
+    width: 3rem;
+    height: 3rem;
     color: rgb(234 179 8);
     flex-shrink: 0;
     margin-top: 0.125rem;
@@ -963,7 +963,7 @@ canvas {
 }
 
 .community-title {
-    font-size: 1.875rem;
+    font-size: 2rem;
     line-height: 2.25rem;
     font-weight: 700;
     margin-bottom: 1.5rem;
@@ -983,7 +983,7 @@ canvas {
     border-bottom-width: 1px;
     border-color: rgb(55 65 81);
     color: rgb(229 231 235);
-    font-size: 1rem;
+    font-size: 1.2rem;
 }
 
 .comment-textarea:focus {
@@ -997,6 +997,7 @@ canvas {
     justify-content: flex-end;
     gap: 0.5rem;
     margin-top: 0.75rem;
+    
 }
 
 .comment-btn {
@@ -1004,7 +1005,7 @@ canvas {
     padding-right: 1rem;
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
-    font-size: 0.875rem;
+    font-size: 1rem;
     line-height: 1.25rem;
     border-radius: 0.5rem;
     transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
@@ -1015,6 +1016,7 @@ canvas {
 
 .comment-btn-cancel {
     background-color: rgb(75 85 99);
+    font-size: 1rem;
 }
 
 .comment-btn-cancel:hover {
@@ -1025,6 +1027,7 @@ canvas {
     background-color: rgb(234 179 8);
     color: rgb(17 24 39);
     font-weight: 600;
+    font-size: 1rem;
 }
 
 .comment-btn-submit:hover {
@@ -1048,8 +1051,8 @@ canvas {
 }
 
 .comment-avatar {
-    width: 3rem;
-    height: 3rem;
+    width: 3.5rem;
+    height: 3.5rem;
     border-radius: 9999px;
     flex-shrink: 0;
     overflow: hidden;
@@ -1070,23 +1073,25 @@ canvas {
     display: flex;
     flex-direction: column;
     gap: 0.25rem;
+    
 }
 
 .comment-author {
     font-weight: 600;
     color: rgb(255 255 255);
     margin: 0;
+    font-size: 1.2rem;
 }
 
 .comment-time {
-    font-size: 0.75rem;
+    font-size: 0.9rem;
     line-height: 1rem;
     color: rgb(156 163 175);
     margin: 0;
 }
 
 .comment-text {
-    font-size: 0.875rem;
+    font-size: 1rem;
     line-height: 1.4;
     color: rgb(209 213 219);
     margin: 0;

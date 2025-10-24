@@ -1,6 +1,4 @@
-// ========================================
-// BLOCKA - Juego de Rompecabezas Rotacional
-// ========================================
+
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -159,25 +157,25 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        // Ensure at least two pieces are rotated
+        
         let rotatedCount = pieces.filter(p => p.rotation !== 0).length;
         if (rotatedCount < 2) {
-            // Find pieces with rotation 0
+            
             const zeroRotPieces = pieces.filter(p => p.rotation === 0);
-            // Shuffle zeroRotPieces
+            
             for (let i = zeroRotPieces.length - 1; i > 0; i--) {
                 const j = Math.floor(Math.random() * (i + 1));
                 [zeroRotPieces[i], zeroRotPieces[j]] = [zeroRotPieces[j], zeroRotPieces[i]];
             }
-            // Rotate enough pieces to ensure at least two are rotated
+            
             for (let i = 0; i < 2 - rotatedCount; i++) {
-                zeroRotPieces[i].rotation = Math.floor(Math.random() * 3) + 1; // 1, 2, or 3
+                zeroRotPieces[i].rotation = Math.floor(Math.random() * 3) + 1; // 1, 2, o 3
             }
         }
     }
 
     function drawPieces() {
-        // ✅ CORREGIDO: Usar dimensiones del contenedor, no fijas
+       
         const container = canvas.parentElement;
         canvas.width = container.clientWidth;
         canvas.height = container.clientHeight;
@@ -204,7 +202,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function drawSolved() {
-        // ✅ CORREGIDO: Usar dimensiones del contenedor
+        
         const container = canvas.parentElement;
         canvas.width = container.clientWidth;
         canvas.height = container.clientHeight;
@@ -454,7 +452,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Función para cambiar la imagen principal de la galería
     function changeGalleryImage(newImageSrc) {
-        // Obtener la imagen principal de la galería
+        
         const mainImage = document.querySelector('.gallery-main img');
 
         // Cambiar la fuente de la imagen
@@ -462,7 +460,7 @@ document.addEventListener('DOMContentLoaded', () => {
             mainImage.src = newImageSrc;
         }
 
-        // Actualizar las clases de las miniaturas (opcional: para mostrar cuál está activa)
+       
         const thumbnails = document.querySelectorAll('.gallery-thumb');
         thumbnails.forEach(thumb => {
             thumb.classList.remove('gallery-thumb-active');
@@ -473,9 +471,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Función para volver al principio
-
-    // Asegurarse de que el botón esté oculto al cargar la página
+    
     const backToTopButton = document.getElementById('back-to-top');
     if (backToTopButton) {
         backToTopButton.classList.add('hidden');
@@ -483,6 +479,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 });
+
 // Función para cambiar la imagen principal de la galería
 function changeGalleryImage(thumbnail) {
     // Obtener la imagen principal
@@ -496,7 +493,7 @@ function changeGalleryImage(thumbnail) {
         mainImage.style.opacity = '1';
     }, 150);
 
-    // Actualizar clases activas de las miniaturas
+    
     const thumbnails = document.querySelectorAll('.gallery-thumb');
     thumbnails.forEach(thumb => {
         thumb.classList.remove('gallery-thumb-active');
