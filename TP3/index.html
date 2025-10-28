@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BLOCKA - Juego de Rompecabezas</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+
+    <div id="game-container">
+        <h1>🐾 BLOCKA 🐾</h1>
+
+        <!-- Pantalla inicial con botón Play -->
+        <div id="menu-screen">
+            <button id="play-btn" class="btn btn-primary btn-large">▶ PLAY</button>
+        </div>
+
+        <!-- Barra de estado del juego -->
+        <div id="status-bar" style="display: none;">
+            <span>Nivel: <span id="level-display">1</span>/6</span>
+            <span>Tiempo: <span id="time-display">00:00</span></span>
+            <button id="menu-btn" class="btn btn-secondary btn-small">Volver al Menú</button>
+        </div>
+
+        <!-- Canvas del juego -->
+        <div id="canvas-container" style="display: none;">
+            <canvas id="gameCanvas"></canvas>
+        </div>
+
+        <!-- Botón de ayuda (solo niveles 4, 5, 6) -->
+        <div id="hint-container" style="display: none;">
+            <button id="hint-btn" class="btn btn-warning">💡 Ayudita (+5s)</button>
+        </div>
+    </div>
+
+    <!-- Modal de Instrucciones -->
+    <div id="instructions-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <h2>🎮 BLOCKA: Temática de Animales</h2>
+            <div class="instructions">
+                <p><strong>🔄 Rota los cuadrantes para completar la imagen</strong></p>
+                <p>El juego consta de <strong>6 niveles</strong></p>
+                <p>Completá todos los niveles para ganar el juego</p>
+                <p>⏱️ <strong>¡Cuanto menor sea el tiempo, mejor!</strong></p>
+                <hr>
+                <h3>📖 Cómo Jugar:</h3>
+                <ul>
+                    <li><strong>Click Izquierdo:</strong> Rota hacia la izquierda ↺</li>
+                    <li><strong>Click Derecho:</strong> Rota hacia la derecha ↻</li>
+                    <li><strong>Objetivo:</strong> Forma la imagen completa rotando las 4 piezas</li>
+                    <li><strong>Niveles 4-6:</strong> Las imágenes tienen filtros que se eliminan al completar</li>
+                    <li><strong>Ayudita:</strong> Corrige una pieza automáticamente (+5 segundos)</li>
+                </ul>
+            </div>
+            <button id="start-game-btn" class="btn btn-primary btn-large">Comenzar</button>
+        </div>
+    </div>
+
+    <!-- Modal de Resultado -->
+    <div id="result-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <h2 id="modal-title">¡Nivel Completado!</h2>
+            <div id="modal-message"></div>
+            <div id="modal-buttons"></div>
+        </div>
+    </div>
+
+    <script src="./js/index.js"></script>
+
+</body>
+
+</html>

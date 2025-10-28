@@ -1,0 +1,279 @@
+/* Estilos CSS Puros y Responsivos */
+:root {
+    --primary-color: #3b82f6;
+    /* Blue-500 */
+    --secondary-color: #10b981;
+    /* Emerald-500 */
+    --danger-color: #ef4444;
+    /* red-500 */
+    --bg-color: #f3f4f6;
+    /* Gray-100 */
+    --card-color: #ffffff;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    color: #1f2937;
+}
+
+#game-container {
+    background-color: var(--card-color);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    max-width: 900px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+h1 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-top: 0;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+#status-bar {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-weight: 600;
+    font-size: 1.1rem;
+    padding: 10px 0;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+#canvas-container {
+    width: 100%;
+    max-width: 600px;
+    aspect-ratio: 1 / 1;
+    /* Maintain 1:1 aspect ratio */
+    background-color: #374151;
+    /* Dark background for canvas area */
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+}
+
+canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+#controls-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    width: 100%;
+}
+
+.btn {
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.06);
+    min-width: 120px;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.btn-primary:hover:not(:disabled) {
+    background-color: #2563eb;
+    /* Blue-600 */
+}
+
+.btn-secondary {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+.btn-secondary:hover:not(:disabled) {
+    background-color: #059669;
+    /* Emerald-600 */
+}
+
+.btn-danger {
+    background-color: var(--danger-color);
+    color: white;
+}
+
+.btn-danger:hover:not(:disabled) {
+    background-color: #c2410c;
+    /* Red-600 */
+}
+
+.btn:disabled {
+    background-color: #d1d5db;
+    /* Gray-300 */
+    color: #9ca3af;
+    /* Gray-400 */
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+/* Modal Styles */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: var(--card-color);
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+    max-width: 500px;
+    width: 90%;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.modal-content h2 {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+.modal-content .instructions {
+    text-align: left;
+    margin: 20px 0;
+}
+
+.modal-content .instructions ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.modal-content .instructions li {
+    padding: 8px 0;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.modal-content .instructions li:last-child {
+    border-bottom: none;
+}
+
+.modal-content hr {
+    border: none;
+    border-top: 2px solid #e5e7eb;
+    margin: 20px 0;
+}
+
+.subtitle {
+    text-align: center;
+    color: #6b7280;
+    margin-top: -10px;
+    margin-bottom: 20px;
+}
+
+#menu-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 40px 0;
+}
+
+.btn-large {
+    padding: 15px 40px;
+    font-size: 1.3rem;
+}
+
+.btn-small {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+    min-width: auto;
+}
+
+.btn-warning {
+    background-color: #f59e0b;
+    color: white;
+}
+
+.btn-warning:hover:not(:disabled) {
+    background-color: #d97706;
+}
+
+#hint-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#final-time {
+    font-size: 2rem;
+    color: var(--secondary-color);
+    font-weight: bold;
+    margin: 15px 0;
+}
+
+#animation-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+    text-shadow: 0 0 10px black;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    #game-container {
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    #status-bar {
+        font-size: 0.9rem;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .btn {
+        width: 100%;
+        min-width: auto;
+    }
+
+    #controls-container {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
