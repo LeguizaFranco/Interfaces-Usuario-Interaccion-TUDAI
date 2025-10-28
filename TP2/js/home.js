@@ -85,7 +85,6 @@ function startLoadingSimulation() {
         percentageText.textContent = Math.floor(currentProgress) + '%';
     }, intervalTime);
 }
-
 // juego propio
 function getMyOwnGame() {
     return {
