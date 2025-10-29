@@ -85,6 +85,7 @@ function startLoadingSimulation() {
         percentageText.textContent = Math.floor(currentProgress) + '%';
     }, intervalTime);
 }
+
 // juego propio
 function getMyOwnGame() {
     return {
@@ -100,7 +101,7 @@ function loadGamesFromAPI() {
     fetch('https://vj.interfaces.jima.com.ar/api/v2')
         .then(response => response.json())
         .then(games => {
-            console.log('Juegos cargados:', games);
+
 
             // Insertar mi juego propio al inicio
             const myGame = getMyOwnGame();
@@ -132,25 +133,29 @@ function initializeCarousel() {
 // Configurar navegación del carrusel
 function setupCarouselNavigation() {
     // Configurar flechas
-    const leftArrow = document.querySelector('.carousel .arrow.left');
-    const rightArrow = document.querySelector('.carousel .arrow.right');
+    const leftArrow = document.querySelector('.carousel > .arrow.left');
+    const rightArrow = document.querySelector('.carousel  > .arrow.right');
 
     if (leftArrow) {
-        // Remover listeners previos y agregar nuevos
         leftArrow.onclick = null;
         leftArrow.addEventListener('click', (e) => {
             e.preventDefault();
-            console.log('Flecha izquierda clickeada');
+            // Agregar clase de animación a la flecha
+            leftArrow.classList.add('clicked');
+            setTimeout(() => leftArrow.classList.remove('clicked'), 300);
+
             changeSlide(-1);
         });
     }
 
     if (rightArrow) {
-        // Remover listeners previos y agregar nuevos
         rightArrow.onclick = null;
         rightArrow.addEventListener('click', (e) => {
             e.preventDefault();
-            console.log('Flecha derecha clickeada');
+            // Agregar clase de animación a la flecha
+            rightArrow.classList.add('clicked');
+            setTimeout(() => rightArrow.classList.remove('clicked'), 300);
+
             changeSlide(1);
         });
     }
@@ -158,13 +163,13 @@ function setupCarouselNavigation() {
     // Configurar dots después de un pequeño delay para asegurar que existan
     setTimeout(() => {
         const dots = document.querySelectorAll('.carousel .dots .dot');
-        console.log('Dots encontrados:', dots.length);
+
 
         dots.forEach((dot, index) => {
             dot.onclick = null;
             dot.addEventListener('click', (e) => {
                 e.preventDefault();
-                console.log(`Dot ${index} clickeado`);
+
                 goToSlide(index);
             });
         });
@@ -174,12 +179,12 @@ function setupCarouselNavigation() {
     const carouselContainer = document.querySelector('.carousel');
     if (carouselContainer) {
         carouselContainer.addEventListener('mouseenter', () => {
-            console.log('Mouse entró al carrusel - pausando');
+
             pauseAutoSlide();
         });
 
         carouselContainer.addEventListener('mouseleave', () => {
-            console.log('Mouse salió del carrusel - reiniciando');
+
             startAutoSlide();
         });
     }
@@ -187,7 +192,6 @@ function setupCarouselNavigation() {
 
 // Cambiar slide
 function changeSlide(direction) {
-    console.log(`Cambiando slide. Dirección: ${direction}, isAutoSliding: ${isAutoSliding}`);
 
     if (isAutoSliding && direction !== 1) {
         // Solo permitir cambios manuales cuando no está en auto-slide
@@ -204,7 +208,6 @@ function changeSlide(direction) {
         currentSlide = totalSlides - 1;
     }
 
-    console.log(`Slide cambió de ${previousSlide} a ${currentSlide}`);
     updateCarouselSlide();
 
     // Solo reiniciar auto-slide si fue un cambio manual
@@ -215,10 +218,8 @@ function changeSlide(direction) {
 
 // Ir a slide específico
 function goToSlide(slideIndex) {
-    console.log(`Ir a slide específico: ${slideIndex}`);
 
     if (slideIndex === currentSlide) {
-        console.log('Ya está en ese slide');
         return;
     }
 
@@ -233,22 +234,35 @@ function updateCarouselSlide() {
     const carouselSlide = document.querySelector('.carousel-slide');
     const dots = document.querySelectorAll('.carousel .dots .dot');
 
-    console.log(`Actualizando slide a posición ${currentSlide}`);
-
     if (carouselSlide) {
         const translateX = -currentSlide * 33.33;
         carouselSlide.style.transform = `translateX(${translateX}%)`;
-        console.log(`Transform aplicado: translateX(${translateX}%)`);
-    } else {
-        console.log('No se encontró .carousel-slide');
+
+        // Animar las cards del slide actual
+        setTimeout(() => {
+            const allSlideGroups = document.querySelectorAll('.slide-group');
+            const currentSlideGroup = allSlideGroups[currentSlide];
+
+            if (currentSlideGroup) {
+                const cards = currentSlideGroup.querySelectorAll('.card');
+                cards.forEach((card, index) => {
+                    // Agregar clase bounce con un pequeño delay para cada card
+                    setTimeout(() => {
+                        card.classList.add('bounce');
+                        // Remover la clase después de la animación
+                        setTimeout(() => {
+                            card.classList.remove('bounce');
+                        }, 900); // Ajustado al tiempo de la animación
+                    }, index * 100);
+                });
+            }
+        }, 100); // Pequeño delay para que la transición empiece primero
     }
 
     // Actualizar dots activos
     dots.forEach((dot, index) => {
         dot.classList.toggle('active', index === currentSlide);
     });
-
-    console.log(`Dots actualizados. Activo: ${currentSlide}`);
 }
 
 // Iniciar auto-slide
@@ -257,18 +271,18 @@ function startAutoSlide() {
     isAutoSliding = true;
 
     carouselInterval = setInterval(() => {
-        console.log('Auto-slide ejecutándose');
+
         changeSlide(1);
     }, 5000); // Cada 5 segundos
 
-    console.log('Auto-slide iniciado');
+
 }
 
 // Pausar auto-slide
 function pauseAutoSlide() {
     clearInterval(carouselInterval);
     isAutoSliding = false;
-    console.log('Auto-slide pausado');
+
 }
 
 function restartAutoSlide() {
@@ -276,7 +290,7 @@ function restartAutoSlide() {
     setTimeout(() => {
         startAutoSlide();
     }, 1000); // Esperar 1 segundo antes de reiniciar
-    console.log('Auto-slide reiniciado');
+
 }
 
 // Función simplificada para actualizar dots (ya no necesaria, pero la mantengo por compatibilidad)
@@ -430,38 +444,6 @@ function createGameCard(game, cardIndex = 0) {
     `;
 }
 
-// Función auxiliar para crear el contenido de la card (actualizada)
-function createCardContent(game, cardIndex) {
-    const isOwnGame = game.isOwnGame || false;
-    const isPaidGame = !isOwnGame && (cardIndex % 2 === 1);
-    const statusText = isOwnGame ? 'DESTACADO' : (isPaidGame ? '$29.99' : 'Gratis');
-
-    const cartIcon = isPaidGame ? `
-        <svg class="cart-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <g><path fill-rule="evenodd" clip-rule="evenodd" d="M2 1C1.44772 1 1 1.44772 1 2C1 2.55228 1.44772 3 2 3H3.21922L6.78345 17.2569C5.73276 17.7236 5 18.7762 5 20C5 21.6569 6.34315 23 8 23C9.65685 23 11 21.6569 11 20C11 19.6494 10.9398 19.3128 10.8293 19H15.1707C15.0602 19.3128 15 19.6494 15 20C15 21.6569 16.3431 23 18 23C19.6569 23 21 21.6569 21 20C21 18.3431 19.6569 17 18 17H8.78078L8.28078 15H18C20.0642 15 21.3019 13.6959 21.9887 12.2559C22.6599 10.8487 22.8935 9.16692 22.975 7.94368C23.0884 6.24014 21.6803 5 20.1211 5H5.78078L5.15951 2.51493C4.93692 1.62459 4.13696 1 3.21922 1H2ZM18 13H7.78078L6.28078 7H20.1211C20.6742 7 21.0063 7.40675 20.9794 7.81078C20.9034 8.9522 20.6906 10.3318 20.1836 11.3949C19.6922 12.4251 19.0201 13 18 13ZM18 20.9938C17.4511 20.9938 17.0062 20.5489 17.0062 20C17.0062 19.4511 17.4511 19.0062 18 19.0062C18.5489 19.0062 18.9938 19.4511 18.9938 20C18.9938 20.5489 18.5489 20.9938 18 20.9938ZM7.00617 20C7.00617 20.5489 7.45112 20.9938 8 20.9938C8.54888 20.9938 8.99383 20.5489 8.99383 20C8.99383 19.4511 8.54888 19.0062 8 19.0062C7.45112 19.0062 7.00617 19.4511 7.00617 20Z" fill="#ffffff"/></g>
-        </svg>
-    ` : `
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="top-overlay">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z"/>
-        </svg>
-    `;
-
-    return `
-        <img src="${game.background_image_low_res}" alt="${game.name}" class="card-img">
-        <button class="play-btn" title="Jugar ${game.name}" ${isOwnGame ? 'onclick="window.location.href=\'game-page.html\'"' : ''}>
-            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M16.6582 9.28638C18.098 10.1862 18.8178 10.6361 19.0647 11.2122C19.2803 11.7152 19.2803 12.2847 19.0647 12.7878C18.8178 13.3638 18.098 13.8137 16.6582 14.7136L9.896 18.94C8.29805 19.9387 7.49907 20.4381 6.83973 20.385C6.26501 20.3388 5.73818 20.0469 5.3944 19.584C5 19.053 5 18.1108 5 16.2264V7.77357C5 5.88919 5 4.94701 5.3944 4.41598C5.73818 3.9531 6.26501 3.66111 6.83973 3.6149C7.49907 3.5619 8.29805 4.06126 9.896 5.05998L16.6582 9.28638Z" stroke="#ffffff" stroke-width="2" stroke-linejoin="round" fill="#ffffff"/>
-            </svg>
-        </button>
-        ${cartIcon}
-        <div class="bottom-overlay">
-            <h4 class="status ${isOwnGame ? 'own-game' : (isPaidGame ? 'paid' : '')}">${statusText}</h4>
-            <h3 class="game-title">${game.name}</h3>
-            ${isOwnGame ? '<span class="own-badge">★ JUEGO DESTACADO</span>' : ''}
-        </div>
-    `;
-}
-
 // Actualizar sección "Nuestros elegidos" con alternancia
 function updateChosenSection(games) {
     const chosenSlide = document.querySelector('.chosen-slide');
@@ -548,10 +530,6 @@ function initializeCategoriesModal() {
         link.addEventListener('click', (e) => {
             e.preventDefault();
             const category = link.getAttribute('data-category');
-            console.log(`Categoría seleccionada: ${category}`);
-
-            // Aquí puedes agregar la lógica para filtrar por categoría
-            handleCategorySelection(category);
             hideCategoriesModal();
         });
     });
@@ -571,11 +549,6 @@ function showCategoriesModal() {
     if (modal && overlay) {
         overlay.classList.add('show');
         modal.classList.add('show');
-
-        // Prevenir scroll del body cuando el modal está abierto
-        document.body.style.overflow = 'hidden';
-
-        console.log('Modal de categorías abierto');
     }
 }
 
@@ -586,11 +559,6 @@ function hideCategoriesModal() {
     if (modal && overlay) {
         modal.classList.remove('show');
         overlay.classList.remove('show');
-
-        // Restaurar scroll del body
-        document.body.style.overflow = 'auto';
-
-        console.log('Modal de categorías cerrado');
     }
 }
 
@@ -630,11 +598,6 @@ function initializeLanguagesModal() {
         link.addEventListener('click', (e) => {
             e.preventDefault();
             const language = link.getAttribute('data-language');
-            console.log(`Idioma seleccionado: ${language}`);
-
-            // Actualizar idioma activo
-            updateActiveLanguage(language);
-            handleLanguageSelection(language);
             hideLanguagesModal();
         });
     });
@@ -657,11 +620,6 @@ function showLanguagesModal() {
     if (modal && overlay) {
         overlay.classList.add('show');
         modal.classList.add('show');
-
-        // Prevenir scroll del body cuando el modal está abierto
-        document.body.style.overflow = 'hidden';
-
-        console.log('Modal de idiomas abierto');
     }
 }
 
@@ -672,57 +630,9 @@ function hideLanguagesModal() {
     if (modal && overlay) {
         modal.classList.remove('show');
         overlay.classList.remove('show');
-
-        // Restaurar scroll del body
-        document.body.style.overflow = 'auto';
-
-        console.log('Modal de idiomas cerrado');
     }
 }
 
-function showLanguageChangeNotification(language) {
-    // Crear notificación temporal (opcional)
-    const notification = document.createElement('div');
-    notification.style.cssText = `
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        background: linear-gradient(45deg, #6282AA, #4a90e2);
-        color: white;
-        padding: 12px 20px;
-        border-radius: 8px;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-        z-index: 10000;
-        font-family: 'Nunito', sans-serif;
-        font-weight: 600;
-        transform: translateX(100%);
-        transition: transform 0.3s ease;
-    `;
-
-    const languageNames = {
-        'es': 'Español',
-        'en': 'English',
-        'pt': 'Português',
-        'fr': 'Français',
-        'de': 'Deutsch'
-    };
-
-    notification.textContent = `Idioma cambiado a ${languageNames[language]}`;
-    document.body.appendChild(notification);
-
-    // Mostrar notificación
-    setTimeout(() => {
-        notification.style.transform = 'translateX(0)';
-    }, 100);
-
-    // Ocultar notificación después de 3 segundos
-    setTimeout(() => {
-        notification.style.transform = 'translateX(100%)';
-        setTimeout(() => {
-            notification.remove();
-        }, 300);
-    }, 3000);
-}
 
 // Funcionalidad del modal de usuario
 function initializeUserModal() {
@@ -759,14 +669,14 @@ function initializeUserModal() {
     menuLinks.forEach(link => {
         link.addEventListener('click', (e) => {
             const action = link.getAttribute('data-action');
-            console.log(`Acción de usuario seleccionada: ${action}`);
 
-            // Para logout, permitir la redirección natural del enlace
-            if (action === 'logout') {
-                // No llamamos preventDefault() para permitir la redirección
-                hideUserModal();
-                return;
-            }
+
+            // // Para logout, permitir la redirección natural del enlace
+            // if (action === 'logout') {
+            //     // No llamamos preventDefault() para permitir la redirección
+            //     hideUserModal();
+            //     return;
+            // }
 
             // Para otras acciones, prevenir la redirección
             e.preventDefault();
@@ -794,10 +704,7 @@ function showUserModal() {
         overlay.classList.add('show');
         modal.classList.add('show');
 
-        // Prevenir scroll del body cuando el modal está abierto
-        document.body.style.overflow = 'hidden';
 
-        console.log('Modal de usuario abierto');
     }
 }
 
@@ -809,10 +716,7 @@ function hideUserModal() {
         modal.classList.remove('show');
         overlay.classList.remove('show');
 
-        // Restaurar scroll del body
-        document.body.style.overflow = 'auto';
 
-        console.log('Modal de usuario cerrado');
     }
 }
 
