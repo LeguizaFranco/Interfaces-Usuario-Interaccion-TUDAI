@@ -59,7 +59,7 @@ function startLoadingSimulation() {
     const loadingOverlay = document.getElementById('loading-overlay');
 
     let currentProgress = 0;
-    const totalTime = 1000; // 1 segundos
+    const totalTime = 5000; // 1 segundos
     const intervalTime = 50; // Actualizar cada 50ms
     const increment = 100 / (totalTime / intervalTime); // Incremento por cada intervalo
 
