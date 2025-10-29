@@ -709,6 +709,11 @@ body {
 .carousel-wrapper {
   position: relative;
   display: flex;
+  padding: 2%;
+  padding-bottom: 0%;
+  background: linear-gradient(90deg, #172430, #1b283865);
+  box-shadow: #0000008a 0px 4px 10px;
+  border-radius: 15px;
   align-items: center;
   width: 100%;
   overflow: hidden;
