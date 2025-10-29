@@ -71,10 +71,6 @@ function initializeCategoriesModal() {
         link.addEventListener('click', (e) => {
             e.preventDefault();
             const category = link.getAttribute('data-category');
-            console.log(`Categoría seleccionada: ${category}`);
-
-            // Aquí puedes agregar la lógica para filtrar por categoría
-            handleCategorySelection(category);
             hideCategoriesModal();
         });
     });
@@ -94,11 +90,6 @@ function showCategoriesModal() {
     if (modal && overlay) {
         overlay.classList.add('show');
         modal.classList.add('show');
-
-        // Prevenir scroll del body cuando el modal está abierto
-        document.body.style.overflow = 'hidden';
-
-        console.log('Modal de categorías abierto');
     }
 }
 
@@ -109,11 +100,6 @@ function hideCategoriesModal() {
     if (modal && overlay) {
         modal.classList.remove('show');
         overlay.classList.remove('show');
-
-        // Restaurar scroll del body
-        document.body.style.overflow = 'auto';
-
-        console.log('Modal de categorías cerrado');
     }
 }
 
@@ -153,11 +139,6 @@ function initializeLanguagesModal() {
         link.addEventListener('click', (e) => {
             e.preventDefault();
             const language = link.getAttribute('data-language');
-            console.log(`Idioma seleccionado: ${language}`);
-
-            // Actualizar idioma activo
-            updateActiveLanguage(language);
-            handleLanguageSelection(language);
             hideLanguagesModal();
         });
     });
@@ -180,11 +161,6 @@ function showLanguagesModal() {
     if (modal && overlay) {
         overlay.classList.add('show');
         modal.classList.add('show');
-
-        // Prevenir scroll del body cuando el modal está abierto
-        document.body.style.overflow = 'hidden';
-
-        console.log('Modal de idiomas abierto');
     }
 }
 
@@ -195,56 +171,7 @@ function hideLanguagesModal() {
     if (modal && overlay) {
         modal.classList.remove('show');
         overlay.classList.remove('show');
-
-        // Restaurar scroll del body
-        document.body.style.overflow = 'auto';
-
-        console.log('Modal de idiomas cerrado');
     }
-}
-
-function showLanguageChangeNotification(language) {
-    // Crear notificación temporal (opcional)
-    const notification = document.createElement('div');
-    notification.style.cssText = `
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        background: linear-gradient(45deg, #6282AA, #4a90e2);
-        color: white;
-        padding: 12px 20px;
-        border-radius: 8px;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-        z-index: 10000;
-        font-family: 'Nunito', sans-serif;
-        font-weight: 600;
-        transform: translateX(100%);
-        transition: transform 0.3s ease;
-    `;
-
-    const languageNames = {
-        'es': 'Español',
-        'en': 'English',
-        'pt': 'Português',
-        'fr': 'Français',
-        'de': 'Deutsch'
-    };
-
-    notification.textContent = `Idioma cambiado a ${languageNames[language]}`;
-    document.body.appendChild(notification);
-
-    // Mostrar notificación
-    setTimeout(() => {
-        notification.style.transform = 'translateX(0)';
-    }, 100);
-
-    // Ocultar notificación después de 3 segundos
-    setTimeout(() => {
-        notification.style.transform = 'translateX(100%)';
-        setTimeout(() => {
-            notification.remove();
-        }, 300);
-    }, 3000);
 }
 
 // Funcionalidad del modal de usuario
@@ -282,14 +209,13 @@ function initializeUserModal() {
     menuLinks.forEach(link => {
         link.addEventListener('click', (e) => {
             const action = link.getAttribute('data-action');
-            console.log(`Acción de usuario seleccionada: ${action}`);
 
-            // Para logout, permitir la redirección natural del enlace
-            if (action === 'logout') {
-                // No llamamos preventDefault() para permitir la redirección
-                hideUserModal();
-                return;
-            }
+            // // Para logout, permitir la redirección natural del enlace
+            // if (action === 'logout') {
+            //     // No llamamos preventDefault() para permitir la redirección
+            //     hideUserModal();
+            //     return;
+            // }
 
             // Para otras acciones, prevenir la redirección
             e.preventDefault();
@@ -316,11 +242,6 @@ function showUserModal() {
     if (modal && overlay) {
         overlay.classList.add('show');
         modal.classList.add('show');
-
-        // Prevenir scroll del body cuando el modal está abierto
-        document.body.style.overflow = 'hidden';
-
-        console.log('Modal de usuario abierto');
     }
 }
 
@@ -331,10 +252,5 @@ function hideUserModal() {
     if (modal && overlay) {
         modal.classList.remove('show');
         overlay.classList.remove('show');
-
-        // Restaurar scroll del body
-        document.body.style.overflow = 'auto';
-
-        console.log('Modal de usuario cerrado');
     }
 }
