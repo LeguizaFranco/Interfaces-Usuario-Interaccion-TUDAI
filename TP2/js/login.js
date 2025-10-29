@@ -11,14 +11,21 @@ function comprobarLoginRegistro(e) {
     let formData = new FormData(formularioLogin);
     let email = formData.get('Email');
     let password = formData.get('Password');
-    
-    if (email && password == "123") {
+
+    if (email && password) {
         botonLoginRegistro.classList.remove("boton-login-register");
         mensajeVerificacionCuenta.innerHTML = "Has iniciado sesión correctamente";
+
         if (botonLoginRegistro.classList.contains("verificacion-fallida")) {
             botonLoginRegistro.classList.remove("verificacion-fallida");
         }
         botonLoginRegistro.classList.add("verificacion-exitosa");
+
+        // Redirigir al index.html después de 1 segundo
+        setTimeout(() => {
+            window.location.href = "index.html";
+        }, 1000);
+
     } else {
         botonLoginRegistro.classList.remove("boton-login-register");
         mensajeVerificacionCuenta.innerHTML = "Faltan datos o los datos introducidos son incorrectos";
@@ -26,8 +33,7 @@ function comprobarLoginRegistro(e) {
             botonLoginRegistro.classList.remove("verificacion-exitosa");
         }
         botonLoginRegistro.classList.add("verificacion-fallida");
-    
+
     }
 }
-
 
