@@ -4,6 +4,7 @@ let carouselGames = [];
 let carouselInterval;
 let isAutoSliding = false;
 
+// Función para volver al principio
 function scrollToTop() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
@@ -22,6 +23,11 @@ window.addEventListener('scroll', function () {
 
 // Loading simulado al cargar la página
 document.addEventListener('DOMContentLoaded', function () {
+    // Asegurarse de que el botón esté oculto al cargar la página
+    const backToTopButton = document.getElementById('back-to-top');
+    if (backToTopButton) {
+        backToTopButton.classList.add('hidden');
+    }
     // Crear el overlay de loading
     createLoadingOverlay();
 
