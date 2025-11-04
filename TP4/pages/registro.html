@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear cuenta</title>
+    <link rel="stylesheet" href="../css/login-register-style.css">
+</head>
+<body>
+    <div class="contenedor-form">
+        <div class="contenido">
+            <div class="contenedor-imagen">
+                <div>
+                    <a href="../pages/index.html">
+                        <img src="../img/fox-games2.png" alt="fox-games-logo">
+                    </a>
+                </div>
+            </div>
+           
+            <div class="contenedor-formulario">
+                <div class="titulo-form">
+                    <h1 class="titulo">CREAR UNA CUENTA</h1>
+                </div>
+                <div class="formulario">
+                    <div class="lista-form">
+                        <form id="formularioRegistro" action="">
+                            <ul>
+                                <li class="elemento-lista-entrada-formulario">
+                                    <div class="contenedor-entrada-texto-formulario">
+                                        <input type="text" class="entrada-texto-formulario" name="Nombre"  placeholder="Nombre *" required autocomplete="off">
+                                    </div>
+                                </li>
+                                <li class="elemento-lista-entrada-formulario">
+                                    <input type="text" class="entrada-texto-formulario" name="Apellido" placeholder="Apellido *" required autocomplete="off">
+                                </li>
+                                <li class="elemento-lista-entrada-formulario">
+                                    <input type="email" class="entrada-texto-formulario" name="Email"  placeholder="Email *" required autocomplete="off">
+                                </li>
+                                <li class="elemento-lista-entrada-formulario" id="elemento-lista-entrada-fecha-nacimiento">
+                                    <div>
+                                        <label for="">Fecha de nacimiento *</label>
+                                    </div>
+                                    <div class="contenedor-entradas-fecha-nacimiento">
+                                        <div class="entradas-fecha-nacimiento">
+                                            <select name="Dia" id="select-fecha-nacimiento-dias" class="entrada-formulario-fecha-nacimiento" aria required>
+                                                <option value="" disabled selected hidden>Dia</option>
+                                            </select>
+                                            <select name="Mes" id="select-fecha-nacimiento-meses" class="entrada-formulario-fecha-nacimiento" required>
+                                                <option value="" disabled selected hidden>Mes</option>
+                                            </select>
+                                            <input type="number" class="entrada-formulario-fecha-nacimiento" name="Year" placeholder="Año" min="1920" max="2020" required autocomplete="off">
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="elemento-lista-entrada-formulario">
+                                    <input type="text" class="entrada-texto-formulario entrada-texto-formulario-opcional" name="Nickname" placeholder="Nickname" autocomplete="off">
+                                </li>
+                                <li class="elemento-lista-entrada-formulario">
+                                    <input type="text" class="entrada-texto-formulario" name="Password"  placeholder="Contraseña *" required autocomplete="off">
+                                </li>
+                                <li class="elemento-lista-entrada-formulario">
+                                    <input type="text" class="entrada-texto-formulario" name="RepetirPassword" placeholder="Repetir contraseña *" required autocomplete="off">
+                                </li>
+                            </ul>
+                            <div class="contenedor-imagen" id="contenedor-imagen-captcha">
+                                <img src="../img/captcha.jpg" alt="captcha-google" id="imagen-captcha">
+                            </div>
+                            <div>
+                                <p id="mensaje-verificacion-cuenta"></p>
+                            </div>
+                            <div class="contenedor-boton-login-register">
+                                
+                                <button type="submit" id="boton-login-register" class="boton-login-register">CREAR CUENTA</button>
+
+                            </div>
+                            <div>
+                                <p>¿Ya tienes una cuenta? <a href="../pages/login.html">Inicia sesión</a></p>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div> 
+
+            <div class="contenedor-separador">
+                <div class="separador">
+                    <p>O</p>
+                </div>
+            </div>
+
+            <div class="contenedor-alternativa-iniciar-sesion">
+                <div class="subtitulo-alternativa-iniciar-sesion">
+                    <h3 class="titulo">INICIAR SESIÓN CON</h3>
+                </div>
+                <div class="contenedor-imagenes-alternativa-iniciar-sesion">
+                    <div class="contenedor-imagen">
+                        <img src="../img/facebook-144x144.png" alt="facebook-logo">
+                    </div>
+                    <div class="contenedor-separador">
+                        <p>O</p>
+                    </div>
+                    <div class="contenedor-imagen">
+                        <img src="../img/icons8-google-144.png" alt="google-logo">
+                    </div>
+                </div>
+            </div> 
+        </div>
+    </div>
+    <script type="text/javascript" src="../js/registro.js"></script>
+</body>
+</html>
