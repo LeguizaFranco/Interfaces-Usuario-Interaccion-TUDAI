@@ -45,7 +45,7 @@ class PegSolitaireGame {
      * Carga todas las imágenes necesarias antes de iniciar el juego.
      */
     async loadImages(theme) {
-        const boardImageUrl = '../img/logo-batman.jpg';
+        const boardImageUrl = 'https://img.freepik.com/foto-gratis/diseno-diseno-fondo-pared-marron-liso-abstracto-plantilla-web-informe-comercial-color-degradado-circulo-suave_1258-54600.jpg?semt=ais_hybrid&w=740&q=80';
 
         let pegImageUrl;
         switch (theme) {
@@ -59,7 +59,7 @@ class PegSolitaireGame {
                 pegImageUrl = '../img/logo-robin.jpg';
                 break;
             default:
-                pegImageUrl = 'https://placehold.co/100x100/3182CE/FFFFFF?text=Default';
+                pegImageUrl = '../img/logo-batman.jpg';
         }
         // --------------------------
 
