@@ -34,16 +34,16 @@ class PegSolitaireGame {
 
         // Elementos de la UI
         this.restartButton = document.getElementById('restart-button');
-        this.helpButton = document.getElementById('help-button');
-        this.helpModal = document.getElementById('help-modal');
-        this.closeModal = document.getElementById('close-modal');
+        
+        
+        
 
         // Bind de 'this' para los listeners
         this.handleMouseDown = this.handleMouseDown.bind(this);
         this.handleMouseMove = this.handleMouseMove.bind(this);
         this.handleMouseUp = this.handleMouseUp.bind(this);
         this.startGame = this.startGame.bind(this);
-        this.toggleHelpModal = this.toggleHelpModal.bind(this);
+        
         this.gameLoop = this.gameLoop.bind(this); // Bindear el gameLoop
     }
 
@@ -61,7 +61,7 @@ class PegSolitaireGame {
         let pegImageUrl;
         switch (theme) {
             case 'batman':
-                pegImageUrl = '../img/logo-batman.jpg';
+                pegImageUrl = '../img/batman.png';
                 break;
             case 'joker':
                 pegImageUrl = '../img/logo-joker.jpg';
@@ -205,13 +205,8 @@ class PegSolitaireGame {
         canvas.addEventListener('touchend', (e) => { e.preventDefault(); this.handleMouseUp(e); }, { passive: false });
 
         this.restartButton.addEventListener('click', this.startGame);
-        this.helpButton.addEventListener('click', this.toggleHelpModal);
-        this.closeModal.addEventListener('click', this.toggleHelpModal);
-        window.addEventListener('click', (event) => {
-            if (event.target == this.helpModal) {
-                this.toggleHelpModal();
-            }
-        });
+        
+        
     }
 
     /**
@@ -265,9 +260,7 @@ class PegSolitaireGame {
     }
 
 
-    toggleHelpModal() {
-        this.helpModal.style.display = this.helpModal.style.display === 'block' ? 'none' : 'block';
-    }
+   
 
     // --- 3. Bucle del Juego (Ahora solo llama al Renderer) ---
 

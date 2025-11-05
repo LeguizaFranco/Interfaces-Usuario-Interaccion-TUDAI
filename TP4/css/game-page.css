@@ -142,31 +142,7 @@ body {
 }
 
 /* Estilo para los botones CTA */
-.cta-button {
-    padding: 0.75rem 1.5rem;
-    font-weight: 600;
-    font-size: medium;
-    border-radius: 0.5rem;
-    transition: all 0.2s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-}
 
-.cta-primary {
-    background-color: #F59E0B;
-    color: #1F2937;
-    box-shadow: 0 2px 3px rgba(245, 159, 11, 0.231);
-}
-
-/* Hover mejorado para el botón JUGAR AHORA */
-.cta-primary:hover {
-    background-color: #efad12;
-    transform: translateY(-1.5px);
-    /* Mayor elevación */
-    box-shadow: 0 3px 6px rgba(245, 159, 11, 0.116);
-}
 
 /* Estilo para el botón flotante "Volver al Principio" */
 .back-to-top-button {
@@ -354,10 +330,10 @@ body {
     background-color: rgb(24, 32, 44);
     border-radius: 16px;
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
-    padding: 24px;
+    padding: 39px;
     /* NUEVO: Ancho mejorado */
-    width: 95%;
-    max-width: 900px;
+    width: 100%;
+    
     box-sizing: border-box;
 
 }
@@ -437,6 +413,7 @@ canvas {
     line-height: 2rem;
     font-weight: 700;
     margin: 5.5%;
+    margin-top: 12%;
     color: rgb(234 179 8);
     text-align: center;
 }
@@ -464,7 +441,7 @@ canvas {
 }
 
 .rule-text {
-    font-size: 1rem;
+    font-size: 1.13rem;
     line-height: 1.8rem;
     margin: 3.6% 2%;
 }
@@ -481,16 +458,7 @@ canvas {
     margin: 2.6%;
 }
 
-.btn-primary {
-    box-shadow: 0 10px 15px -3px rgb(234 179 8 / 0.3), 0 4px 6px -4px rgb(234 179 8 / 0.3);
-    width: 102.5%;
-}
 
-.btn-icon {
-    width: 2.5rem;
-    height: 2.5rem;
-    margin-right: 0.4rem;
-}
 
 .description-section {
     margin-top: 3rem;
