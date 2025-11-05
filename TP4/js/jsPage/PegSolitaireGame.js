@@ -3,59 +3,48 @@ class PegSolitaireGame {
     // --- 1. Inicialización ---
 
     constructor(canvasId) {
-        // El juego TIENE un Renderer.
         this.renderer = new Renderer(canvasId);
 
-        // Geometría (la obtenemos del renderer para consistencia)
         // Se inicializarán en 0, pero se actualizarán después del resize
         this.cellSize = this.renderer.cellSize;
         this.boardOffsetX = this.renderer.boardOffsetX;
         this.boardOffsetY = this.renderer.boardOffsetY;
 
         // Estado del juego
-        this.boardState = []; // Ahora contendrá objetos Peg o null
-        this.images = {}; // RE-INTRODUCIDO para cargar imágenes
+        this.boardState = []; 
+        this.images = {};
         this.isDragging = false;
-        this.selectedPeg = null; // Almacenará el *objeto* Peg
-        this.dragPos = null; // { x, y }
+        this.selectedPeg = null; 
+        this.dragPos = null; 
         this.validMoves = [];
         this.animationFrameId = null;
         this.gameOver = false;
-        this.gameOverMessage = ""; // Inicializar
+        this.gameOverMessage = ""; 
 
-        // Opciones seleccionadas (con valores por defecto)
         this.selectedTheme = 'batman';
         this.selectedShape = 'round';
 
-        // Temporizador
+        
         this.timeLimit = 5 * 60; // 5 minutos
         this.timerInterval = null;
         this.timerElement = document.getElementById('timer');
 
         // Elementos de la UI
-        this.restartButton = document.getElementById('restart-button');
-        
-        
-        
+        this.restartButton = document.getElementById('restart-button');       
 
-        // Bind de 'this' para los listeners
+
         this.handleMouseDown = this.handleMouseDown.bind(this);
         this.handleMouseMove = this.handleMouseMove.bind(this);
         this.handleMouseUp = this.handleMouseUp.bind(this);
         this.startGame = this.startGame.bind(this);
         
-        this.gameLoop = this.gameLoop.bind(this); // Bindear el gameLoop
+        this.gameLoop = this.gameLoop.bind(this);
     }
 
     /**
-     * Carga imágenes - RE-INTRODUCIDO
      * Carga todas las imágenes necesarias antes de iniciar el juego.
-     * AHORA ES DINÁMICO BASADO EN EL TEMA.
      */
     async loadImages(theme) {
-        console.log(`Cargando imágenes para el tema: ${theme}`);
-
-        // --- URLs de Placeholder ---
         const boardImageUrl = '../img/logo-batman.jpg';
 
         let pegImageUrl;
@@ -77,8 +66,6 @@ class PegSolitaireGame {
         const loadImage = (src) => {
             return new Promise((resolve, reject) => {
                 const img = new Image();
-                // Permitir Carga Cross-Origin si las imágenes están en otro dominio
-                img.crossOrigin = "Anonymous";
                 img.onload = () => resolve(img);
                 img.onerror = (err) => {
                     console.error("Error al cargar imagen:", src, err);
@@ -89,7 +76,6 @@ class PegSolitaireGame {
         };
 
         try {
-            // AHORA SOLO CARGAMOS EL TABLERO Y 1 IMAGEN DE FICHA
             const [board, peg] = await Promise.all([
                 loadImage(boardImageUrl),
                 loadImage(pegImageUrl),
@@ -97,13 +83,10 @@ class PegSolitaireGame {
 
             this.images = { board, peg };
 
-            // MUY IMPORTANTE: Pasa la imagen del tablero al Renderer
+            // Pasa la imagen del tablero al Renderer
             this.renderer.boardImage = this.images.board;
-
-            console.log("Imágenes cargadas correctamente.");
         } catch (error) {
             console.error("Una o más imágenes no pudieron cargarse. El juego puede no verse bien.", error);
-            // El juego continuará, pero el Renderer usará el color de fallback
         }
     }
 
@@ -115,7 +98,6 @@ class PegSolitaireGame {
      * Objeto Peg = Ficha (de la clase seleccionada)
      */
     initBoard() {
-        // Ahora usamos la imagen del tema cargado
         const pegImg = this.images.peg;
 
         // Determinamos qué clase de Ficha usar
@@ -132,8 +114,6 @@ class PegSolitaireGame {
                 PegClass = RoundPeg;
                 break;
         }
-
-        // Fallback por si la imagen de la ficha falló
         if (!pegImg) {
             console.error("Imagen de ficha no cargada. El tablero estará vacío.");
         }
@@ -156,7 +136,7 @@ class PegSolitaireGame {
     startGame() {
         this.initBoard();
         this.gameOver = false;
-        this.gameOverMessage = ""; // Limpiar mensaje
+        this.gameOverMessage = ""; 
         this.isDragging = false;
         this.selectedPeg = null;
         this.validMoves = [];
@@ -183,7 +163,7 @@ class PegSolitaireGame {
         this.gameLoop();
     }
 
-    // --- 2. Lógica del Temporizador y UI ---
+    // --- Lógica del Temporizador y UI ---
 
     updateTimerDisplay() {
         const minutes = Math.floor(this.timeLeft / 60);
@@ -191,26 +171,18 @@ class PegSolitaireGame {
         this.timerElement.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
     }
 
-    /**
-     * Vincula los eventos del canvas y botones (REINICIAR, AYUDA)
-     */
     bindEvents() {
         const canvas = this.renderer.canvas;
         canvas.addEventListener('mousedown', this.handleMouseDown);
         canvas.addEventListener('mousemove', this.handleMouseMove);
         canvas.addEventListener('mouseup', this.handleMouseUp);
-        // Soporte táctil básico
-        canvas.addEventListener('touchstart', (e) => { e.preventDefault(); this.handleMouseDown(e); }, { passive: false });
-        canvas.addEventListener('touchmove', (e) => { e.preventDefault(); this.handleMouseMove(e); }, { passive: false });
-        canvas.addEventListener('touchend', (e) => { e.preventDefault(); this.handleMouseUp(e); }, { passive: false });
 
-        this.restartButton.addEventListener('click', this.startGame);
-        
+        this.restartButton.addEventListener('click', this.startGame);         
         
     }
 
     /**
-     * NUEVO: Vincula los eventos del modal de selección
+     * Vincula los eventos del modal de selección
      */
     initSelectionModal() {
         const selectionModal = document.getElementById('selection-modal');
@@ -236,14 +208,11 @@ class PegSolitaireGame {
         });
 
         startButton.addEventListener('click', async () => {
-            // 1. Ocultar modal y mostrar juego
             selectionModal.style.display = 'none';
             gameContainer.style.display = 'flex';
-
-            // 2. !IMPORTANTE! Redimensionar el renderer AHORA que el canvas es visible
             this.renderer.resize();
 
-            // 3. Actualizar la geometría en el juego principal
+            // Actualizar la geometría en el juego principal
             this.cellSize = this.renderer.cellSize;
             this.boardOffsetX = this.renderer.boardOffsetX;
             this.boardOffsetY = this.renderer.boardOffsetY;
@@ -257,19 +226,16 @@ class PegSolitaireGame {
             // 6. Iniciar el juego
             this.startGame();
         });
-    }
-
-
-   
+    }   
 
     // --- 3. Bucle del Juego (Ahora solo llama al Renderer) ---
 
     gameLoop() {
-        // La lógica del juego (OOP) le pasa el estado al Renderer (Vista).
+        // La lógica del juego  le pasa el estado al Renderer (Vista).
         this.renderer.drawFrame(
             this.boardState,
             this.isDragging,
-            this.selectedPeg, // Pasa el objeto ficha
+            this.selectedPeg, 
             this.dragPos,
             this.validMoves,
             this.gameOver,
@@ -282,7 +248,6 @@ class PegSolitaireGame {
     }
 
     // --- 4. Lógica de Interacción (Drag & Drop) ---
-    // (Esta lógica ahora maneja objetos Peg, no números)
 
     handleMouseDown(e) {
         if (this.gameOver) return;
@@ -316,8 +281,6 @@ class PegSolitaireGame {
         if (this.gameOver || !this.isDragging) return;
 
         const dropPos = this.getMousePos(e);
-        // Para eventos táctiles 'touchend', e.touches no existe, 
-        // pero this.dragPos (de touchmove) tiene la última posición.
         const gridPos = this.getGridPos(dropPos ? dropPos.x : this.dragPos.x, dropPos ? dropPos.y : this.dragPos.y);
 
         let moveMade = false;
@@ -344,7 +307,6 @@ class PegSolitaireGame {
 
         if (!moveMade) {
             // Movimiento inválido: Devolver la ficha a su lugar
-            // this.selectedPeg.row y .col no cambiaron
             this.boardState[this.selectedPeg.row][this.selectedPeg.col] = this.selectedPeg;
         }
 
@@ -359,8 +321,7 @@ class PegSolitaireGame {
         }
     }
 
-    // --- 5. Lógica del Juego (Movimientos y Game Over) ---
-    // (Actualizada para chequear objetos Peg y null)
+    // --- 5. Lógica del Juego ---
 
     findValidMovesForPeg(r, c) {
         const moves = [];
@@ -424,8 +385,7 @@ class PegSolitaireGame {
         console.log("Juego terminado:", message);
     }
 
-    // --- 6. Funciones de Ayuda (Coordenadas) ---
-    // (getCanvasPos se duplica aquí para la lógica de getGridPos)
+    // --- 6. Funciones de Ayuda  ---
 
     getCanvasPos(row, col) {
         const x = (col * this.cellSize) + this.boardOffsetX + this.cellSize / 2;
@@ -449,7 +409,6 @@ class PegSolitaireGame {
             y = e.clientY;
         }
 
-        // Ajustar por el reescalado del canvas (DPR)
         const scaleX = this.renderer.width / rect.width;
         const scaleY = this.renderer.height / rect.height;
 
@@ -480,7 +439,7 @@ class PegSolitaireGame {
 
 
 // --- Punto de entrada ---
-window.onload = () => { // Ya NO es async
+window.onload = () => { 
     // 1. Crear el juego (que a su vez crea el Renderer)
     const game = new PegSolitaireGame('game-canvas');
 

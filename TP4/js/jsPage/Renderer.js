@@ -16,12 +16,11 @@ class Renderer {
     }
 
     /**
-     * NUEVO: Esta función recalcula las dimensiones del canvas.
+     * Esta función recalcula las dimensiones del canvas.
      * Debe llamarse DESPUÉS de que el canvas sea visible.
      */
     resize() {
         const dpr = window.devicePixelRatio || 1;
-        // AHORA que el canvas es visible, getBoundingClientRect() funcionará
         const rect = this.canvas.getBoundingClientRect();
 
         this.canvas.width = rect.width * dpr;
@@ -59,7 +58,7 @@ class Renderer {
     drawFrame(boardState, isDragging, draggedPeg, dragPos, validMoves, gameOver, gameOverMessage) {
         this.ctx.clearRect(0, 0, this.width, this.height);
 
-        // 1. Dibujar tablero (fondo) - AHORA ES UNA IMAGEN
+        // 1. Dibujar tablero (fondo) 
         if (this.boardImage) {
             this.ctx.drawImage(this.boardImage, 0, 0, this.width, this.height);
         } else {
@@ -95,7 +94,7 @@ class Renderer {
                 const pos = this.getCanvasPos(r, c);
 
                 // Dibujar el hueco (siempre)
-                this.ctx.fillStyle = 'rgba(0, 0, 0, 0.2)';
+                this.ctx.fillStyle = 'rgba(248, 244, 0, 1)';
                 this.ctx.beginPath();
                 this.ctx.arc(pos.x, pos.y, this.pegRadius * 0.8, 0, Math.PI * 2);
                 this.ctx.fill();
@@ -117,7 +116,7 @@ class Renderer {
         }
 
         const alpha = (Math.sin(Date.now() / 150) + 1) / 2 * 0.6 + 0.2;
-        this.ctx.fillStyle = `rgba(255, 255, 255, ${alpha})`;
+        this.ctx.fillStyle = `rgba(0, 0, 0, ${alpha})`;
 
         for (const move of validMoves) {
             const pos = this.getCanvasPos(move.to.row, move.to.col);
@@ -149,8 +148,8 @@ class Renderer {
         this.ctx.textBaseline = 'middle';
         this.ctx.font = 'bold 30px Inter';
         this.ctx.fillText(message, this.width / 2, this.height / 2);
-        this.ctx.font = '20px Inter';
-        this.ctx.fillText("Presiona 'Reiniciar' para jugar de nuevo", this.width / 2, this.height / 2 + 40);
+        this.ctx.font = '25px Inter';
+        this.ctx.fillText("Presiona 'Reiniciar juego' para jugar de nuevo", this.width / 2, this.height / 2 + 40);
         this.ctx.restore();
     }
 }

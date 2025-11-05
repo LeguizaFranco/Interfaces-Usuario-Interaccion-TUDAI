@@ -97,7 +97,15 @@ function getMyOwnGame() {
     return {
         id: 9999,
         name: "PEG SOLITAIRE: BATMAN EDITION",
-        background_image_low_res: "./img/image-game.png",
+        background_image_low_res: "../img/image-game.png",
+        isOwnGame: true
+    };
+}
+function getMyOwnGame2() {
+    return {
+        id: 9999,
+        name: "BLOCKA ZooSpin",
+        background_image_low_res: "../img/portada1.png",
         isOwnGame: true
     };
 }
@@ -111,7 +119,8 @@ function loadGamesFromAPI() {
 
             // Insertar mi juego propio al inicio
             const myGame = getMyOwnGame();
-            const gamesWithMyGame = [myGame, ...games];
+            const myGame2 = getMyOwnGame2();
+            const gamesWithMyGame = [myGame, myGame2, ...games];
             carouselGames = gamesWithMyGame.slice(0, 9); // 9 juegos para 3 slides de 3
 
             updateCarousels(gamesWithMyGame);
