@@ -1,0 +1,167 @@
+#gameCanvas {
+  display: none;
+}
+
+body {
+    margin: 0;
+    background: #70c5ce;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+}
+/* Menú principal*/
+.home-screen {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #70c5ce;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.home-screen h1 {
+    font-size: 50px;
+    color: white;
+    margin-bottom: 40px;
+}
+
+.home-screen button {
+    padding: 15px 30px;
+    margin: 10px;
+    font-size: 22px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#controlsPanel {
+    margin-top: 20px;
+    background: rgba(255,255,255,0.8);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.hidden {
+    display: none;
+}
+
+  .top-container {
+    width:100%;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:linear-gradient(#cfefff,#a0d9ff 60%, #8fd1ff 100%);
+    padding:20px;
+    box-sizing:border-box;
+  }
+
+  /* game container with responsive scaling */
+  .game {
+    width: min(var(--w), 95vw);
+    aspect-ratio: calc(var(--w) / var(--h));
+    background: linear-gradient(#bfe9ff,#86d0ff);
+    position:relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+    border-radius:12px;
+    overflow:hidden;
+  }
+
+  canvas { 
+    display:block; 
+    width:100%; 
+    height:100%;    
+  }
+
+  /* UI overlay */
+  .top-data {
+    position:absolute;
+    left:12px; 
+    top:12px;
+    display:flex; 
+    gap:8px; 
+    align-items:center;
+    color:white; 
+    font-weight:600; 
+    text-shadow:0 2px 6px rgba(0,0,0,0.6);
+  }
+
+  .top-data .panel {
+    background:var(--ui-bg);
+    padding:6px 10px; 
+    border-radius:10px; 
+    font-size:14px;
+    display:flex;
+    gap:8px; 
+    align-items:center;
+  }
+
+  .game-over-screen {
+    position:absolute; 
+    left:50%; top:50%; 
+    transform:translate(-50%,-50%);
+    color:#fff; 
+    text-align:center; 
+    pointer-events:auto; 
+  }
+
+  .game-over-screen .game-over-title{ 
+    font-size:36px; 
+    font-weight:800; 
+    text-shadow:0 6px 20px rgba(0,0,0,0.5); 
+    margin-bottom: 5%; 
+  }
+  
+  .controls {
+    position:absolute; 
+    right:30px; 
+    top:12px; 
+    display:flex; 
+    gap:6px;
+  }
+
+  button {
+    background:rgba(255,255,255,0.12); 
+    border:0; margin:2.5%; 
+    padding:7px 12px; 
+    color:white; 
+    border-radius:8px;
+    cursor:pointer; 
+    font-weight:700;  
+    align-items: center;
+  }
+
+  button:active{
+    transform:translateY(1px);
+  }
+
+  /* animation keyframes for simple CSS overlay (used for flap toast) */
+  @keyframes flap-toast {
+    0%{transform:translateY(10px) rotate(-4deg); opacity:0}
+    50%{transform:translateY(-6px) rotate(4deg); opacity:1}
+    100%{transform:translateY(0) rotate(0); opacity:0}
+  }
+
+  .toast {
+    position:absolute; 
+    left:50%; top:18px; 
+    transform:translateX(-50%);
+    background:rgba(0,0,0,0.6); 
+    color:white; padding:6px 12px; 
+    border-radius:999px;
+    pointer-events:none; 
+    opacity:0;
+  }
+
+  .toast.show { 
+    animation: flap-toast 700ms ease forwards; 
+  }
+
+  /* simple responsive hint */
+  .hint { 
+    font-size:12px; 
+    opacity:0.9; 
+  }
+
+  
