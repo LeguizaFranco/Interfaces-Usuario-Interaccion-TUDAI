@@ -27,7 +27,7 @@ let game = {
   paused: false,
   score: 0,
   lives: 3,
-  timeLeft: 20, 
+  timeLeft: 45, 
   speed: 180, 
   gravity: 1100,
   flapImpulse: -360,
@@ -416,7 +416,7 @@ function endGame(){
 }
 
 function restart(){
-  game.score = 0; game.lives = 3; game.timeLeft =20;
+  game.score = 0; game.lives = 3; game.timeLeft =45;
   game.spawnTimer = 0; game.objects.length = 0; game.particles.length = 0;
   player.x = 150; player.y = H/2; player.verticalSpeed = 0; player.alive = true; player.invulnerable = 0;
   game.state = 'playing'; gameOverScreen.style.display = 'none';
