@@ -9,30 +9,31 @@ body {
 }
 /* Menú principal*/
 .home-screen {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient( 
-        rgb(255, 255, 255), 
-        rgb(227, 248, 255),
-        rgb(93, 252, 255)
-    );
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient( 
+    rgb(255, 255, 255), 
+    rgb(227, 248, 255),
+    rgb(20, 216, 220)
+  );
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
+
+.home-screen h1 {
+  font-size: 50px;
+  color: rgb(20, 120, 140);
+  text-shadow: 0 2px 18px rgba(0, 140, 255, 0.45);
+  margin-bottom: 30px;
+}
+
 
 img {
   width: 150px;
   mix-blend-mode: multiply;
-}
-
-.home-screen h1 {
-    font-size: 50px;
-    color: white;
-    text-shadow: rgba(19, 115, 156, 0.756) 1px 1px 30px;
-    margin-bottom: 30px;
 }
 
 .home-screen button {
@@ -109,7 +110,7 @@ img {
     position:absolute; 
     left:50%; top:50%; 
     transform:translate(-50%,-50%);
-    color:#fff; 
+    color:#ff0000; 
     text-align:center; 
     pointer-events:auto; 
   }
@@ -123,7 +124,7 @@ img {
 
   .game-over-title + div {
   
-    font-size:16px;
+    font-size:28px;
     font-weight: 600; 
   }
   
@@ -136,18 +137,24 @@ img {
   }
 
   button {
-    background:rgba(105, 201, 218, 0.603); 
-    border:0;
+    background: linear-gradient(90deg, #4fc3f7 0%, #1976d2 100%);
+    border: 0;
     margin: 13px 0px 5px 10px;
-    padding:7px 12px; 
-    color:white; 
-    border-radius:8px;
-    cursor:pointer; 
-    font-weight:500;
-    font-size: 16px;  
+    padding: 7px 12px;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 20px;
     align-items: center;
     box-shadow: rgba(21, 18, 75, 0.317) 0px 2px 5px;
     text-shadow: rgba(0, 0, 0, 0.452) 0px 2px 10px;
+    transition: transform 0.18s, box-shadow 0.18s;
+  }
+
+  button:hover {
+    transform: scale(1.05);
+    box-shadow: rgba(21, 18, 75, 0.45) 0px 4px 12px;
   }
 
   button:active{
