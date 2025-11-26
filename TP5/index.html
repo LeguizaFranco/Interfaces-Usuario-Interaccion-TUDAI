@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Flappy-Bird</title>
+<link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+        <!-- Menú incio -->
+    <div id="homeScreen" class="home-screen">
+      <img src="images/pajarito.png" alt="">
+        <h1>Flappy Little Bird</h1>
+        <button id="btnPlay">Jugar</button>
+    </div>
+
+<div class="top-container">
+  <div class="game">
+    <canvas id="gameCanvas" width="1100" height="890"></canvas>
+
+    <div class="top-data">
+      <div class="panel">Score: <h4 id="score">0</h4></div>
+      <div class="panel">Vidas: <h4 id="lives">3</h4></div>
+      <div class="panel">Tiempo: <h4 id="timer">20</h4>s</div>
+    </div>
+
+    <div class="controls">
+      <button id="btnPause">Pausar</button>
+      <button id="btnRestart">Reiniciar</button>
+    </div>
+
+    <div class="game-over-screen" id="gameOverScreen">
+      <div class="game-over-title" id="gameOverTitle">Game Over</div>
+      <div>Score final: <h3 id="finalScore">0</h3></div>
+      <button id="playAgain">Volver a Jugar </button>
+      <button id="btnControls">Controles</button>
+        <div id="controlsPanel" class="hidden controls-panel"> 
+            <h3>🕹 CONTROLES:</h3>
+            <img src="images/tecla.png" alt="" class="tecla">
+            <img src="images/mouse.png" alt="" class="mouse">
+            <p>Presiona clic o espacio para saltar</p>
+            <button id="btnBack">Cerrar</button>
+        </div>
+    </div>
+  </div>
+</div>
+<script src="js/game.js"></script>
+</body>
+</html>
